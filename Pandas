@@ -1,0 +1,94 @@
+#
+pd.DataFrame([],[],[])   --> gives three rows
+pd.DataFrame(dictionary)  --> keyword- column heading, list value- column values
+
+#
+df.shape()
+df.size()
+df.head()    --> gives top 5 rows
+df.head(x)   --> gives top x rows
+df.tail(x)   --> gives last x rows
+df.sample(x, seed value = m) --> gives random x entries,upon giving any seed value the entries do not change even after refreshing
+df.columns   --> gives columns name
+df.index     --> gives rows names/index
+df.dtype     --> data type of every column
+df.info()    --> information about table
+df.describe().T   --> gives relation btw different columns, .T is for transpose
+df.nunique() --> tells how many unique numbers are present in specifc column
+df['a'].unique()  --> gives all the unique values of column 'a'
+
+
+#
+.csv files are very large, .feather files are of less mb, .parquet is very famous and known for its less size
+another format can be .xlsx for excel sheets which has less size than .csv files
+
+#
+pd.read_csv('xyz.csv', sep='', names=['',''], index_col=[''], use_cols=['',''] ,header = j, skiprows= [give row index], nrows= j, 
+encoding='', error_bad_line= True/ False, dtype={'column_name': data_type}, parse_dates=['column name'], convertor={'abc': convertor},
+na_values=['',''], chunksize= j )
+pd.read_parquet('xyz.parquet')
+pd.read_excel('xyz.xlsx')
+
+
+-names          --> change the column headings
+-index_cols     --> to use other column as index
+-use_cols       --> to use the specified columns only
+-header         --> to use any specific row as main heading row
+-skiprows       --> skip rows
+-nrows          --> gives n number of rows randomly
+-error_bad_lines --> removes all the rows whose number of entries are more than usual rows
+-dtype          --> to change the data type of a specific column
+-parse_dates    --> to consider dates as dates or they are considered as strings initially
+-convertor       --> to convert specific values of a column 
+-na_values      --> considers the listed values as na values and do not consider them
+-chunksize      --> breaks data into chunks for easy working
+
+
+#
+df.to_csv('file name')
+similarly other functions
+
+# Accessing values 
+df.loc[[rows], [columns]]  --> gives the entries of specific rows and columns mentioned here, accepts both numerical and text value, works with m:n value (include nth value)
+df.iloc[[rows], [columns]] --> accepts only numerical values in m:n form (exclude nth value)
+df.at['row name','column name'] --> gives the specific value at this intersection
+df.iat['row name','column name'] --> gives the specific value at this intersection, accepts only integer value
+
+#
+df.sort_values(['xyz','abc'], ascending=[1,0])  --> sorts xyz in ascending and abc in descending
+df.iterrows --> creates a loop passing values of index and row data in dataframe
+df['xyz'].isin(['x','y','z'])  --> to provide values x, y and z only from the 'xyz' column
+df.query(expression)   --> filters rows in a DataFrame using a SQL-like string expression
+
+
+# regex  --> helps in sorting of data 
+.        any character
+\d       digit         
+\D       not a digit
+\w       word char      
+\W       not a word char
+\s       whitespace     
+\S       not whitespace
+^        start of string
+$        end of string
+*        0 or more
++        1 or more
+?        0 or 1 (also makes quantifiers "lazy" when after * + ?)
+{n,m}    between n and m repeats
+[abc]    any one of a, b, c
+[^abc]   anything except a, b, c
+(...)    capturing group
+(?:...)  non-capturing group
+(?P<name>...)  named capturing group
+|        OR / alternation
+\        escape a special character
+
+https://claude.ai/share/b2e43891-30ef-4416-974b-7f20736d1b25
+refer to the examples given here
+
+
+# to add/drop columns
+df['mn'] = np.where(condition, value_if_true, value_if_false)  --> to add new column
+df.drop(columns=['abc'])  --> to drop columns
+df.drop(index=j)
+
