@@ -47,3 +47,10 @@ plt.savefig("Matplot_graph.png", dpi= 300)
 #add grid
 plt.grid(axis='', alpha='')
 
+#concept of subplots
+fig, axs = plt.subplot(3,4)          --[rows, columns]
+axs[1,1].scatter()
+axs[1,2].plot()
+axs[2,1].plot()
+axs[2,2].plot()
+
