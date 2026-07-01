@@ -1,0 +1,3 @@
+# random functions
+np.round(x,i)  --> rounds off decimal x to digits i
+np.linspace(x,y,z) --> produce z number of values between values x and y
